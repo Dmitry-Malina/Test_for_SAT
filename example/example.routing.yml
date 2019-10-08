@@ -1,0 +1,7 @@
+example_form:
+path: '/example'
+defaults: 
+ _title: 'Example form test by Dmitry Malinouski'
+ _controller: '\Drupal\example\Form\ExampleForm
+requirements:
+ _permission: 'access content'
