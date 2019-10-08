@@ -70,6 +70,34 @@ namespace Drupal\Form;
 		 
 			 
 		 }
+		 
+		 public function submitForm( array &$form, FormStateInterFace $form_state){
+			 $send_mail = new \Drupal\Core\Mail\Plugin\Mail\PhpMail();
+			$email_adress = $form_state->getValue('mail')
+			$from ='example@example.com'
+			 $message['headers'] = array(
+                 'content-type' => 'text/html',
+                 'MIME-Version' => '1.0',
+                  'reply-to' => 'hubspot.com',
+                 'from' =>'Dmitry_malinosuki<'.$from.'>')
+				 );	 
+            $message['to'] = $email_address;	
+            $message['body'] = $message;
+			$result = $send_mail->mail($message);
+            if ($result !== true) {
+               $messenger->addMessage('message: '.$form_state->getValue('message'));
+			   echo "Send"
+             $form_state->setRedirect('<front>');
+            }else{
+                  $messenger->addMessage('message: '.$form_state->getValue('message'));
+				  echo "message not sent"
+				   $form_state->setRedirect('<front>');
+ }
+}
+
+ 
+		 }
+		 
 		
 		 
 	 }
